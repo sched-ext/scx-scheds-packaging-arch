@@ -2,7 +2,7 @@
 
 pkgname=scx-scheds
 pkgver=0.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Sched_ext schedulers'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -16,14 +16,13 @@ sha512sums=('a917d09cdc4179d0376e26fdee9a5d300442c14e59ce07798785eb8e263978bc900
 
 build() {
   cd scx-${pkgver}
-  meson setup build --prefix "${pkgdir}/usr" -Dbuildtype=release
-  cd build
-  meson compile
+  arch-meson . build
+  meson compile -C build
 }
 
 package() {
-  cd scx-${pkgver}/build
-  meson install
+  cd scx-${pkgver}
+  meson install -C build --destdir "${pkgdir}"
 }
 
 # vim: ts=2 sw=2 et:
