@@ -1,7 +1,7 @@
 # Maintainer: Tejun Heo <tj@kernel.org>
 
 pkgname=scx-scheds
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=3
 pkgdesc='Sched_ext schedulers'
 url='https://github.com/sched-ext/scx'
@@ -12,7 +12,7 @@ makedepends=('meson' 'bpf' 'pahole' 'rust' 'cargo')
 provides=()
 options=(!lto)
 source=(https://github.com/sched-ext/scx/archive/refs/tags/v${pkgver}.tar.gz)
-sha512sums=('a917d09cdc4179d0376e26fdee9a5d300442c14e59ce07798785eb8e263978bc90046b6260ebd0d66ee4d0ba3915203683c17c52c29cfad8e9a404b7dde0bd7e')
+sha512sums=('2353e7e0051959834dcb1b4ded6dc23742ed395a764b03ca58496208134f89e96e76dd16c0257d03c86f084dbd4c9544daab366370a2f86fa6c2978fe6df606c')
 
 build() {
   cd scx-${pkgver}
