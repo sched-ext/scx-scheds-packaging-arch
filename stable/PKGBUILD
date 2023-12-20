@@ -14,6 +14,19 @@ options=(!lto)
 source=(https://github.com/sched-ext/scx/archive/refs/tags/v${pkgver}.tar.gz)
 sha512sums=('2353e7e0051959834dcb1b4ded6dc23742ed395a764b03ca58496208134f89e96e76dd16c0257d03c86f084dbd4c9544daab366370a2f86fa6c2978fe6df606c')
 
+prepare() {
+ cd scx-${pkgver}
+
+ local src
+  for src in "${source[@]}"; do
+    src="${src%%::*}"
+    src="${src##*/}"
+    [[ $src = *.patch ]] || continue
+    echo "Applying patch $src..."
+    patch -Np1 < "../$src"
+  done
+}
+
 build() {
   cd scx-${pkgver}
   arch-meson . build
