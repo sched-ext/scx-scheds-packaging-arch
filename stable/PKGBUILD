@@ -2,14 +2,13 @@
 
 pkgname=scx-scheds
 pkgver=0.1.2
-pkgrel=4
+pkgrel=5
 pkgdesc='Sched_ext schedulers'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
 license=('GPL-2.0-only')
-depends=('libelf' 'zlib' 'libbpf')
-makedepends=('meson' 'bpf' 'pahole' 'rust' 'cargo')
-provides=()
+depends=('libbpf' 'bpf' 'libelf' 'zlib')
+makedepends=('python' 'meson' 'clang' 'llvm-libs' 'cargo' 'rust')
 options=(!lto)
 source=(https://github.com/sched-ext/scx/archive/refs/tags/v${pkgver}.tar.gz)
 sha512sums=('2353e7e0051959834dcb1b4ded6dc23742ed395a764b03ca58496208134f89e96e76dd16c0257d03c86f084dbd4c9544daab366370a2f86fa6c2978fe6df606c')
@@ -38,5 +37,3 @@ package() {
   meson install -C build --destdir "${pkgdir}"
   install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
 }
-
-# vim: ts=2 sw=2 et:
