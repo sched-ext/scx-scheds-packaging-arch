@@ -11,7 +11,7 @@ depends=('libbpf' 'bpf' 'libelf' 'zlib')
 makedepends=('python' 'meson' 'clang' 'llvm-libs' 'cargo' 'rust')
 options=(!lto)
 source=(https://github.com/sched-ext/scx/archive/refs/tags/v${pkgver}.tar.gz)
-sha512sums=('8c6d248c3816d4af83575cebfab68dbe4a23f2656c000e9d4b78c89972e0e005272559da69e1987b261ee8e2e9631c0fda8b3f8f6637c61209431625b74f741d')
+sha512sums=('055247b87c0de1467bc788865c6a576568d329e1e0bb56ece068ee1b001b1f2860d0d77ff03bd695879821fe6e48d781309a9983820f05a9be54bc1f0b056ed0')
 
 prepare() {
  cd scx-${pkgver}
