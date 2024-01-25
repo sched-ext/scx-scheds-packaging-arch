@@ -1,6 +1,6 @@
-From 653e2b72e19336cb112196f7f644ba12343fa125 Mon Sep 17 00:00:00 2001
+From c2b1ef1bcaf037fe9b4ace711059e7d8c0973318 Mon Sep 17 00:00:00 2001
 From: Piotr Gorski <lucjan.lucjanov@gmail.com>
-Date: Fri, 19 Jan 2024 21:32:11 +0100
+Date: Thu, 25 Jan 2024 16:52:39 +0100
 Subject: [PATCH] scx: introduce systemd services
 
 Signed-off-by: Piotr Gorski <lucjan.lucjanov@gmail.com>
@@ -98,13 +98,13 @@ index 0000000..1bccca8
 +
 diff --git a/services/scx_central.service b/services/scx_central.service
 new file mode 100644
-index 0000000..d279a01
+index 0000000..eb15f0a
 --- /dev/null
 +++ b/services/scx_central.service
 @@ -0,0 +1,13 @@
 +[Unit]
 +Description=Start scx_central
-+ConditionPathExists=/sys/kernel/debug/sched/ext
++ConditionPathIsDirectory=/sys/kernel/sched_ext
 +
 +[Service]
 +Type=simple
@@ -117,13 +117,13 @@ index 0000000..d279a01
 +WantedBy=multi-user.target
 diff --git a/services/scx_flatcg.service b/services/scx_flatcg.service
 new file mode 100644
-index 0000000..7cd7b4d
+index 0000000..08eefc3
 --- /dev/null
 +++ b/services/scx_flatcg.service
 @@ -0,0 +1,13 @@
 +[Unit]
 +Description=Start scx_flatcg
-+ConditionPathExists=/sys/kernel/debug/sched/ext
++ConditionPathIsDirectory=/sys/kernel/sched_ext
 +
 +[Service]
 +Type=simple
@@ -136,13 +136,13 @@ index 0000000..7cd7b4d
 +WantedBy=multi-user.target
 diff --git a/services/scx_nest.service b/services/scx_nest.service
 new file mode 100644
-index 0000000..0e58e2a
+index 0000000..49dfda6
 --- /dev/null
 +++ b/services/scx_nest.service
 @@ -0,0 +1,13 @@
 +[Unit]
 +Description=Start scx_nest
-+ConditionPathExists=/sys/kernel/debug/sched/ext
++ConditionPathIsDirectory=/sys/kernel/sched_ext
 +
 +[Service]
 +Type=simple
@@ -155,13 +155,13 @@ index 0000000..0e58e2a
 +WantedBy=multi-user.target
 diff --git a/services/scx_pair.service b/services/scx_pair.service
 new file mode 100644
-index 0000000..c281f41
+index 0000000..5d0e985
 --- /dev/null
 +++ b/services/scx_pair.service
 @@ -0,0 +1,13 @@
 +[Unit]
 +Description=Start scx_pair
-+ConditionPathExists=/sys/kernel/debug/sched/ext
++ConditionPathIsDirectory=/sys/kernel/sched_ext
 +
 +[Service]
 +Type=simple
@@ -174,13 +174,13 @@ index 0000000..c281f41
 +WantedBy=multi-user.target
 diff --git a/services/scx_qmap.service b/services/scx_qmap.service
 new file mode 100644
-index 0000000..09acb23
+index 0000000..e871564
 --- /dev/null
 +++ b/services/scx_qmap.service
 @@ -0,0 +1,13 @@
 +[Unit]
 +Description=Start scx_qmap
-+ConditionPathExists=/sys/kernel/debug/sched/ext
++ConditionPathIsDirectory=/sys/kernel/sched_ext
 +
 +[Service]
 +Type=simple
@@ -193,13 +193,13 @@ index 0000000..09acb23
 +WantedBy=multi-user.target
 diff --git a/services/scx_rustland.service b/services/scx_rustland.service
 new file mode 100644
-index 0000000..68f07b1
+index 0000000..e879109
 --- /dev/null
 +++ b/services/scx_rustland.service
 @@ -0,0 +1,13 @@
 +[Unit]
 +Description=Start scx_rustland
-+ConditionPathExists=/sys/kernel/debug/sched/ext
++ConditionPathIsDirectory=/sys/kernel/sched_ext
 +
 +[Service]
 +Type=simple
@@ -212,13 +212,13 @@ index 0000000..68f07b1
 +WantedBy=multi-user.target
 diff --git a/services/scx_rusty.service b/services/scx_rusty.service
 new file mode 100644
-index 0000000..644f8d5
+index 0000000..d47007e
 --- /dev/null
 +++ b/services/scx_rusty.service
 @@ -0,0 +1,13 @@
 +[Unit]
 +Description=Start scx_rusty
-+ConditionPathExists=/sys/kernel/debug/sched/ext
++ConditionPathIsDirectory=/sys/kernel/sched_ext
 +
 +[Service]
 +Type=simple
@@ -231,13 +231,13 @@ index 0000000..644f8d5
 +WantedBy=multi-user.target
 diff --git a/services/scx_simple.service b/services/scx_simple.service
 new file mode 100644
-index 0000000..9f270c9
+index 0000000..5f5c715
 --- /dev/null
 +++ b/services/scx_simple.service
 @@ -0,0 +1,13 @@
 +[Unit]
 +Description=Start scx_simple
-+ConditionPathExists=/sys/kernel/debug/sched/ext
++ConditionPathIsDirectory=/sys/kernel/sched_ext
 +
 +[Service]
 +Type=simple
@@ -250,13 +250,13 @@ index 0000000..9f270c9
 +WantedBy=multi-user.target
 diff --git a/services/scx_userland.service b/services/scx_userland.service
 new file mode 100644
-index 0000000..47c29e3
+index 0000000..8db25e4
 --- /dev/null
 +++ b/services/scx_userland.service
 @@ -0,0 +1,13 @@
 +[Unit]
 +Description=Start scx_userland
-+ConditionPathExists=/sys/kernel/debug/sched/ext
++ConditionPathIsDirectory=/sys/kernel/sched_ext
 +
 +[Service]
 +Type=simple
