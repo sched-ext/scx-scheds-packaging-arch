@@ -1,6 +1,6 @@
 pkgbase = scx-scheds-git
 	pkgdesc = sched_ext schedulers
-	pkgver = 0.1.7.r228.g7d335fa
+	pkgver = 0.1.9.r40.g07b521b
 	pkgrel = 2
 	url = https://github.com/sched-ext/scx
 	arch = x86_64
@@ -15,11 +15,15 @@ pkgbase = scx-scheds-git
 	depends = libelf
 	depends = zlib
 	depends = jq
-	provides = scx-scheds=0.1.7.r228.g7d335fa
+	provides = scx-scheds=0.1.9.r40.g07b521b
 	conflicts = scx-scheds
 	options = !lto
 	backup = etc/default/scx
 	source = git+https://github.com/sched-ext/scx
+	source = 90-scx-scheds-install.hook
+	source = 90-scx-scheds-upgrade.hook
 	sha256sums = SKIP
+	sha256sums = 3d1723596ccc6b4774692a0bd675b74b49f8d3f88ffc833a6b74140a75744a97
+	sha256sums = b9b945aba7af30be158ee9ac288499427693dd869352b35c114f116ffcd18998
 
 pkgname = scx-scheds-git
