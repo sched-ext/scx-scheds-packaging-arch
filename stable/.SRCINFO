@@ -1,7 +1,7 @@
 pkgbase = scx-scheds
 	pkgdesc = Sched_ext schedulers
 	pkgver = 0.1.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sched-ext/scx
 	arch = x86_64
 	license = GPL-2.0-only
@@ -17,6 +17,10 @@ pkgbase = scx-scheds
 	options = !lto
 	backup = etc/default/scx
 	source = https://github.com/sched-ext/scx/archive/refs/tags/v0.1.9.tar.gz
+	source = 90-scx-scheds-install.hook
+	source = 90-scx-scheds-upgrade.hook
 	sha512sums = dabee9d4fc5ef4b5bbd8b1e7d681d918d3006499f000d33a1a419b2595415ec1beb454be0d97b22a84ebf56bd1ace444162eec6cfc14c972fb38fceaf6477337
+	sha512sums = 1297c83be18e0a65ba8b0c1499706be60baea78dbcd02317a8c49ec57c21a4be3d082e6346fe08fe74430270140658176c29e9f3d136612b7282cfb4ed80998a
+	sha512sums = 7720a535a8d583297c837b6b8d703dbfc4718a4c07aa536da9ee5f4c52089b16180f9684db7e098eb71f8e8d7f7ae832b2c6471f876c43fa81851c542795f56f
 
 pkgname = scx-scheds

@@ -1,0 +1,19 @@
+[Trigger]
+Type = Path
+Operation = Install
+Target = etc/default/scx
+Target = etc/systemd/journald@sched-ext.conf
+Target = usr/bin/scx_*
+Target = usr/lib/systemd/system/scx.service
+
+[Trigger]
+Type = Package
+Operation = Install
+Target = scx-scheds
+Target = scx-scheds-git
+
+[Action]
+Description = Enable scx_scheduler...
+When = PostTransaction
+Exec = /usr/bin/systemctl enable --now scx.service
+NeedsTargets
