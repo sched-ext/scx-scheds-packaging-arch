@@ -4,8 +4,8 @@
 
 pkgname=scx-scheds
 gitname=scx
-pkgver=0.1.10
-pkgrel=7
+pkgver=1.0.0
+pkgrel=1
 pkgdesc='Sched_ext schedulers'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64' 'aarch64')
@@ -15,18 +15,16 @@ makedepends=('git' 'python' 'meson' 'clang' 'llvm' 'llvm-libs' 'rust')
 backup=('etc/default/scx' 'etc/systemd/journald@sched-ext.conf')
 options=(!lto)
 source=("git+https://github.com/sched-ext/scx?signed#tag=v$pkgver")
-sha256sums=('62a2db6b5f562ddc2c192d7025193b1fd924c3c171ec5135afa286706138c93a')
+sha256sums=('f1f574ec638fba3177181e437eb18cf312af0d84718e11ccc5f968ee389639e6')
 validpgpkeys=(
   697C63013E65270255EBC2608744DC1EB26B5A9A  # Tejun Heo <tj@kernel.org>
   F5504C7B7B8107B40EF9E97AA1148BB3207BCC33  # David Vernet
 )
 
 _backports=(
-1505164ca09876b3439149b1b7df63c524f5856d # scx.service: start service after graphical target
-4558d5c3dd370e6a6250f9c9ded85f7a8e6594f0 # scx: update /etc/default/scx sample flags
-66dea6262be278fa833ee7f2a02834ce192724cb # scx.service: allow overriding scx variables
-3684b1601ce9f52fba9af3678d36b1bcc0966fd5 # Simplifying pacman-hooks
-22f13e22844d3e12590bc71492462dc7d40821a3 # meson: run cargo build in release mode when using plain buildtype
+c7f19094153acf7738b70bfef0c450f0051f2d3e # meson: fix RUSTFLAGS being appended incorrectly
+a7fa651bfc431b6df87177bfa38b55147a071122 # install_user_scheds: Skip packaging of scx_mitosis
+9e2caa74c0ca7327060c4ab05340713cbdaeb97c # systemd: Drop temporarily disabled schedulers from service
 )
 
 _reverts=(
