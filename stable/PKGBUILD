@@ -5,7 +5,7 @@
 pkgname=scx-scheds
 gitname=scx
 pkgver=1.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64' 'aarch64')
@@ -22,6 +22,7 @@ validpgpkeys=(
 )
 
 _backports=(
+3f0fcc319c220798e0e26392863be3951c3a5709 # scx-scheds: set scx_bpfland as default scheduler
 )
 
 _reverts=(
