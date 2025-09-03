@@ -1,10 +1,12 @@
+
+
 # Maintainer: Peter Jung ptr1337 <admin@ptr1337.dev>
 # Maintainer: Piotr Górski <lucjan.lucjanov@gmail.com>
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.12.r18.g244b0454
-pkgrel=1
+pkgver=1.0.15.r305.g7a1f079b
+pkgrel=2
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64' 'aarch64')
@@ -27,7 +29,6 @@ makedepends=(
   git
   llvm
   llvm-libs
-  meson
   python
   rust
 )
@@ -37,12 +38,6 @@ options=(!lto)
 provides=("scx-scheds=$pkgver")
 conflicts=("scx-scheds")
 
-_backports=(
-)
-
-_reverts=(
-)
-
 pkgver() {
   cd $_gitname
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
@@ -50,41 +45,47 @@ pkgver() {
 
 prepare() {
  cd $_gitname
-
- local _c _l
-  for _c in "${_backports[@]}"; do
-    if [[ "${_c}" == *..* ]]; then _l='--reverse'; else _l='--max-count=1'; fi
-    git log --oneline "${_l}" "${_c}"
-    git cherry-pick --mainline 1 --no-commit "${_c}"
-  done
-  for _c in "${_reverts[@]}"; do
-    if [[ "${_c}" == *..* ]]; then _l='--reverse'; else _l='--max-count=1'; fi
-    git log --oneline "${_l}" "${_c}"
-    git revert --mainline 1 --no-commit "${_c}"
-  done
-
-  local src
-  for src in "${source[@]}"; do
-    src="${src%%::*}"
-    src="${src##*/}"
-    [[ $src = *.patch ]] || continue
-    echo "Applying patch $src..."
-    patch -Np1 < "../$src"
-  done
+ cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
   cd $_gitname
-  arch-meson . build -D openrc=disabled \
-    -D libbpf_a=disabled \
-    -D bpftool=disabled \
-    -D b_lto=true \
-    -D b_lto_mode=thin \
-    -D cargo_home="$srcdir"/scx
-  meson compile -C build
+  export CARGO_TARGET_DIR=target
+  cargo build --release --locked --frozen
+}
+
+check() {
+  cd $_gitname
+  cargo test --frozen --locked
 }
 
 package() {
   cd $_gitname
-  meson install -C build --destdir "${pkgdir}"
+
+  # binary files
+  find target/release -maxdepth 1 -type f -executable ! -name '*.so' \
+    -exec install -Dm755 -t "$pkgdir/usr/bin/" {} +
+
+  # systemd services
+  install -Dm644 services/systemd/scx_loader.service \
+    "$pkgdir/usr/lib/systemd/system/scx_loader.service"
+
+  install -Dm644 services/systemd/scx.service \
+    "$pkgdir/usr/lib/systemd/system/scx.service"
+
+  # dbus services
+  install -Dm644 services/systemd/org.scx.Loader.service\
+    "$pkgdir/usr/share/dbus-1/system-services/org.scx.Loader.service"
+
+  # dbus config
+  install -Dm644 tools/scx_loader/org.scx.Loader.conf \
+    "$pkgdir/usr/share/dbus-1/system.d/org.scx.Loader.conf"
+
+  # scx_loader config
+  install -Dm644 services/scx_loader.toml \
+    "$pkgdir/usr/share/scx_loader/config.toml"
+
+  # scx config
+  install -Dm644 services/scx \
+    "$pkgdir/etc/default/scx"
 }
