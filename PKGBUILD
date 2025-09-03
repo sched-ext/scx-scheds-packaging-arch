@@ -3,8 +3,8 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.15.r305.g7a1f079b
-pkgrel=2
+pkgver=1.0.12.r18.g244b0454
+pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64' 'aarch64')
@@ -27,6 +27,7 @@ makedepends=(
   git
   llvm
   llvm-libs
+  meson
   python
   rust
 )
@@ -74,42 +75,16 @@ prepare() {
 
 build() {
   cd $_gitname
-  cargo build \
-     --release \
-     --workspace \
-     --locked \
-     --frozen \
-     --exclude vmlinux_docify \
-     --exclude scx_lib_selftests
+  arch-meson . build -D openrc=disabled \
+    -D libbpf_a=disabled \
+    -D bpftool=disabled \
+    -D b_lto=true \
+    -D b_lto_mode=thin \
+    -D cargo_home="$srcdir"/scx
+  meson compile -C build
 }
 
 package() {
   cd $_gitname
-
-  # binary files
-  find target/release -maxdepth 1 -type f -executable ! -name '*.so' \
-    -exec install -Dm755 -t "$pkgdir/usr/bin/" {} +
-
-  # systemd services
-  install -Dm644 services/systemd/scx_loader.service \
-    "$pkgdir/usr/lib/systemd/system/scx_loader.service"
-
-  install -Dm644 services/systemd/scx.service \
-    "$pkgdir/usr/lib/systemd/system/scx.service"
-
-  # dbus services
-  install -Dm644 services/systemd/org.scx.Loader.service\
-    "$pkgdir/usr/share/dbus-1/system-services/org.scx.Loader.service"
-
-  # dbus config
-  install -Dm644 tools/scx_loader/org.scx.Loader.conf \
-    "$pkgdir/usr/share/dbus-1/system.d/org.scx.Loader.conf"
-
-  # scx_loader config
-  install -Dm644 services/scx_loader.toml \
-    "$pkgdir/usr/share/scx_loader/config.toml"
-
-  # scx config
-  install -Dm644 services/scx \
-    "$pkgdir/etc/default/scx"
+  meson install -C build --destdir "${pkgdir}"
 }
