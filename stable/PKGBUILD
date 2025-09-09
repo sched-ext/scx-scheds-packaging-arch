@@ -5,7 +5,7 @@
 pkgname=scx-scheds
 _gitname=scx
 pkgver=1.0.16
-pkgrel=1
+pkgrel=2
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -32,12 +32,16 @@ makedepends=(
   rust
 )
 options=(!lto)
-source=("git+https://github.com/sched-ext/scx#tag=v${pkgver}")
-sha256sums=('4b0355b523c0245f03340c90593c934f876cdfe33145e9c55c20c80bd13b346f')
+source=("git+https://github.com/sched-ext/scx#tag=v${pkgver}"
+        '0001-etc-default-scx-drop-c-based-schedulers.patch')
+sha256sums=('4b0355b523c0245f03340c90593c934f876cdfe33145e9c55c20c80bd13b346f'
+            'a08ad34b503d5292a97a48152f76106c18b53c25d9e0829f85b5078567656f73')
 
 prepare() {
-  cd $_gitname
-  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+ cd $_gitname
+  # Update /etc/default/scx
+  patch -Np1 < ../0001-etc-default-scx-drop-c-based-schedulers.patch
+ cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
