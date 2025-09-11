@@ -32,7 +32,7 @@ makedepends=(
   rust
 )
 options=(!lto)
-source=("git+https://github.com/sched-ext/scx#tag=v${pkgver}"
+source=("git+https://github.com/sched-ext/scx?signed#tag=v$pkgver"
         '0001-etc-default-scx-drop-c-based-schedulers.patch')
 sha256sums=('4b0355b523c0245f03340c90593c934f876cdfe33145e9c55c20c80bd13b346f'
             'a08ad34b503d5292a97a48152f76106c18b53c25d9e0829f85b5078567656f73')
