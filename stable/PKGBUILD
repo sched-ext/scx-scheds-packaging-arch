@@ -1,6 +1,6 @@
-# Maintainer: Peter Jung <ptr1337@archlinux.org>
+# Maintainer: Peter Jung ptr1337 <admin@ptr1337.dev>
+# Maintainer: Piotr Górski <lucjan.lucjanov@gmail.com>
 # Contributor: Tejun Heo <tj@kernel.org>
-# Contributor: Piotr Górski <lucjan.lucjanov@gmail.com>
 
 pkgname=scx-scheds
 _gitname=scx
@@ -41,7 +41,7 @@ prepare() {
  cd $_gitname
   # Update /etc/default/scx
   patch -Np1 < ../0001-etc-default-scx-drop-c-based-schedulers.patch
- cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
