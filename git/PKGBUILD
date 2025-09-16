@@ -4,7 +4,7 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.16.r66.gc3b6b3c0
+pkgver=1.0.16.r82.geb6e035b
 pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
@@ -60,23 +60,23 @@ check() {
 package() {
   cd $_gitname
 
-  # binary files
+  # Install all built executables (skip .so and .d files)
   find target/release -maxdepth 1 -type f -executable ! -name '*.so' \
     -exec install -Dm755 -t "$pkgdir/usr/bin/" {} +
 
   # systemd service
   install -Dm644 services/systemd/scx_loader.service \
-    "$pkgdir/usr/lib/systemd/system/scx_loader.service"
+    -t "$pkgdir/usr/lib/systemd/system/"
 
-  # dbus service
-  install -Dm644 services/systemd/org.scx.Loader.service\
-    "$pkgdir/usr/share/dbus-1/system-services/org.scx.Loader.service"
+  # D-Bus service
+  install -Dm644 services/systemd/org.scx.Loader.service \
+    -t "$pkgdir/usr/share/dbus-1/system-services/"
 
-  # dbus config
+  # D-Bus configuration
   install -Dm644 tools/scx_loader/org.scx.Loader.conf \
-    "$pkgdir/usr/share/dbus-1/system.d/org.scx.Loader.conf"
+    -t "$pkgdir/usr/share/dbus-1/system.d/"
 
-  # scx_loader config
+  # scx_loader sample configuration (template)
   install -Dm644 services/scx_loader.toml \
     "$pkgdir/usr/share/scx_loader/config.toml"
 }
