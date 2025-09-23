@@ -54,7 +54,7 @@ build() {
 
 check() {
   cd $_gitname
-  cargo test --frozen --locked
+  cargo test --locked --frozen
 }
 
 package() {
