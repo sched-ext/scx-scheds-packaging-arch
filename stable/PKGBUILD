@@ -5,7 +5,7 @@
 pkgname=scx-scheds
 _gitname=scx
 pkgver=1.0.16
-pkgrel=5
+pkgrel=7
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -58,6 +58,7 @@ build() {
      --workspace \
      --exclude scx_rlfifo \
      --exclude scx_wd40 \
+     --exclude scxcash \
      --exclude vmlinux_docify \
      --exclude scx_lib_selftests
 }
@@ -70,6 +71,7 @@ check() {
      --workspace \
      --exclude scx_rlfifo \
      --exclude scx_wd40 \
+     --exclude scxcash \
      --exclude vmlinux_docify \
      --exclude scx_lib_selftests
 }
