@@ -5,7 +5,7 @@
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.0.16.r208.g833e8fa9
-pkgrel=3
+pkgrel=4
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -43,11 +43,13 @@ pkgver() {
 
 prepare() {
  cd $_gitname
+  export RUSTUP_TOOLCHAIN=stable
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
   cd $_gitname
+  export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
   cargo build \
      --release \
@@ -64,6 +66,7 @@ build() {
 
 check() {
   cd $_gitname
+  export RUSTUP_TOOLCHAIN=stable
   cargo test \
      --locked \
      --frozen \
