@@ -5,7 +5,7 @@
 pkgname=scx-scheds
 _gitname=scx
 pkgver=1.0.16
-pkgrel=9
+pkgrel=10
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -55,8 +55,8 @@ build() {
   export CARGO_TARGET_DIR=target
   cargo build \
      --release \
-     --locked \
      --frozen \
+     --all-features \
      --workspace \
      --exclude scx_rlfifo \
      --exclude scx_wd40 \
@@ -69,8 +69,8 @@ check() {
   cd $_gitname
   export RUSTUP_TOOLCHAIN=stable
   cargo test \
-     --locked \
      --frozen \
+     --all-features \
      --workspace \
      --exclude scx_rlfifo \
      --exclude scx_wd40 \
