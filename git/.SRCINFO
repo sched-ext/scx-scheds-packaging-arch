@@ -1,6 +1,6 @@
 pkgbase = scx-scheds-git
 	pkgdesc = sched_ext schedulers and tools
-	pkgver = 1.0.16.r212.ga09691c1
+	pkgver = 1.0.16.r238.g3b3f964d
 	pkgrel = 1
 	url = https://github.com/sched-ext/scx
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = scx-scheds-git
 	depends = libelf
 	depends = protobuf
 	depends = zlib
-	provides = scx-scheds=1.0.16.r212.ga09691c1
+	provides = scx-scheds=1.0.16.r238.g3b3f964d
 	conflicts = scx-scheds
 	options = !lto
 	source = git+https://github.com/sched-ext/scx
