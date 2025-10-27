@@ -4,7 +4,7 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.17.r174.g9213989b
+pkgver=1.0.17.r178.g76e85641
 pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
@@ -48,31 +48,31 @@ pkgver() {
 }
 
 prepare() {
- cd $_gitname
+  cd $_gitname
 
- local _c _l
-  for _c in "${_backports[@]}"; do
-    if [[ "${_c}" == *..* ]]; then _l='--reverse'; else _l='--max-count=1'; fi
-    git log --oneline "${_l}" "${_c}"
-    git cherry-pick --mainline 1 --no-commit "${_c}"
-  done
-  for _c in "${_reverts[@]}"; do
-    if [[ "${_c}" == *..* ]]; then _l='--reverse'; else _l='--max-count=1'; fi
-    git log --oneline "${_l}" "${_c}"
-    git revert --mainline 1 --no-commit "${_c}"
-  done
+  local _c _l
+   for _c in "${_backports[@]}"; do
+     if [[ "${_c}" == *..* ]]; then _l='--reverse'; else _l='--max-count=1'; fi
+     git log --oneline "${_l}" "${_c}"
+     git cherry-pick --mainline 1 --no-commit "${_c}"
+   done
+   for _c in "${_reverts[@]}"; do
+     if [[ "${_c}" == *..* ]]; then _l='--reverse'; else _l='--max-count=1'; fi
+     git log --oneline "${_l}" "${_c}"
+     git revert --mainline 1 --no-commit "${_c}"
+   done
 
-  local src
-  for src in "${source[@]}"; do
-    src="${src%%::*}"
-    src="${src##*/}"
-    [[ $src = *.patch ]] || continue
-    echo "Applying patch $src..."
-    patch -Np1 < "../$src"
-  done
+   local src
+   for src in "${source[@]}"; do
+     src="${src%%::*}"
+     src="${src##*/}"
+     [[ $src = *.patch ]] || continue
+     echo "Applying patch $src..."
+     patch -Np1 < "../$src"
+   done
 
-  export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+   export RUSTUP_TOOLCHAIN=stable
+   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
@@ -86,8 +86,8 @@ build() {
      --workspace \
      --exclude scx_rlfifo \
      --exclude scx_wd40 \
-     --exclude xtask \
      --exclude scxcash \
+     --exclude xtask \
      --exclude vmlinux_docify \
      --exclude scx_arena_selftests
 }
@@ -101,8 +101,8 @@ check() {
      --workspace \
      --exclude scx_rlfifo \
      --exclude scx_wd40 \
-     --exclude xtask \
      --exclude scxcash \
+     --exclude xtask \
      --exclude vmlinux_docify \
      --exclude scx_arena_selftests
 }
