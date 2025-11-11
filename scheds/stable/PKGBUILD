@@ -4,8 +4,8 @@
 
 pkgname=scx-scheds
 _gitname=scx
-pkgver=1.0.17
-pkgrel=3
+pkgver=1.0.18
+pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -30,9 +30,12 @@ makedepends=(
   llvm-libs
   python
 )
+optdepends=(
+'scx-tools: scx_loader and scxtl - A DBUS Interface for Managing sched_ext Schedulers '
+)
 options=(!lto)
 source=("git+https://github.com/sched-ext/scx?signed#tag=v$pkgver")
-sha256sums=('f5ee738afde8f4fc9bf32df10548ad622f1e0cc880ac23b6ee000ba50ff18be6')
+sha256sums=('88af7ab79f457006f8cf40491df09d75eede71dae1e9feea2e21f3b7b8f25817')
 validpgpkeys=(
   697C63013E65270255EBC2608744DC1EB26B5A9A  # Tejun Heo <tj@kernel.org>
   F5504C7B7B8107B40EF9E97AA1148BB3207BCC33  # David Vernet <void@manifault.com>
@@ -112,20 +115,4 @@ package() {
   find target/release \
     -maxdepth 1 -type f -executable ! -name '*.so' \
     -exec install -Dm755 -t "$pkgdir/usr/bin/" {} +
-
-  # systemd service
-  install -Dm644 services/systemd/scx_loader.service \
-    -t "$pkgdir/usr/lib/systemd/system/"
-
-  # D-Bus service
-  install -Dm644 services/systemd/org.scx.Loader.service \
-    -t "$pkgdir/usr/share/dbus-1/system-services/"
-
-  # D-Bus configuration
-  install -Dm644 tools/scx_loader/org.scx.Loader.conf \
-    -t "$pkgdir/usr/share/dbus-1/system.d/"
-
-  # scx_loader sample configuration (template)
-  install -Dm644 services/scx_loader.toml \
-    "$pkgdir/usr/share/scx_loader/config.toml"
 }
