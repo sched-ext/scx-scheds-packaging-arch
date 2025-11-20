@@ -1,11 +1,14 @@
 # Maintainer: Peter Jung ptr1337 <admin@ptr1337.dev>
 # Maintainer: Piotr Górski <lucjan.lucjanov@gmail.com>
 
+# Available profiles: “release”, “release-tiny”, “release-fast“
+# See: https://github.com/sched-ext/scx-loader/blob/main/Cargo.toml
+_mode=release
+
 pkgname=scx-tools
 _gitname=scx-loader
-_mode=release
 pkgver=1.0.18
-pkgrel=5
+pkgrel=6
 pkgdesc='scx_loader: A DBUS Interface for Managing sched_ext Schedulers'
 url='https://github.com/sched-ext/scx-loader'
 arch=('x86_64')
