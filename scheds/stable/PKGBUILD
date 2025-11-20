@@ -2,11 +2,14 @@
 # Maintainer: Piotr Górski <lucjan.lucjanov@gmail.com>
 # Contributor: Tejun Heo <tj@kernel.org>
 
+# Available profiles: “release”, “release-tiny”, “release-fast“
+# See: https://github.com/sched-ext/scx/blob/main/Cargo.toml
+_mode=release
+
 pkgname=scx-scheds
 _gitname=scx
-_mode=release
 pkgver=1.0.18
-pkgrel=3
+pkgrel=4
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
