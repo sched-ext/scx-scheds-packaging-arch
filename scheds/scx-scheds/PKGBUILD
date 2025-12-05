@@ -9,7 +9,7 @@ _mode=release
 pkgname=scx-scheds
 _gitname=scx
 pkgver=1.0.19
-pkgrel=1
+pkgrel=2
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -48,6 +48,7 @@ validpgpkeys=(
 )
 
 _backports=(
+9e08343a64f311bdfa687957f6a84bf811f50487 # scx_raw_pmu: remove flaky tests
 )
 
 _reverts=(
