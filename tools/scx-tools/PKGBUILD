@@ -8,7 +8,7 @@ _mode=release
 pkgname=scx-tools
 _gitname=scx-loader
 pkgver=1.0.19
-pkgrel=1
+pkgrel=2
 pkgdesc='scx_loader: A DBUS Interface for Managing sched_ext Schedulers'
 url='https://github.com/sched-ext/scx-loader'
 arch=('x86_64')
@@ -35,6 +35,7 @@ validpgpkeys=(
 )
 
 _backports=(
+122cdb289d09fc960ba7e24dc6bec10326b424e9 # build: Reduce the binary size for the release-tiny profile
 )
 
 _reverts=(
