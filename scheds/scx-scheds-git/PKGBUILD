@@ -9,7 +9,7 @@ _mode=release
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.0.20.r130.gda3f877a
-pkgrel=2
+pkgrel=3
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -139,6 +139,7 @@ build() {
      --all-features \
      --workspace \
      --exclude scx_rlfifo \
+     --exclude scx_wd40 \
      --exclude scxcash \
      --exclude xtask \
      --exclude vmlinux_docify \
