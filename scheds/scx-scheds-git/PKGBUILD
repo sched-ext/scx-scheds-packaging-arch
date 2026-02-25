@@ -9,7 +9,7 @@ _mode=release
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.0.20.r144.gaed1f77d
-pkgrel=1
+pkgrel=2
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -90,7 +90,8 @@ c647a8ab8fa1418220ad2837a51fac11ecce6160 # Cargo.lock: update crates for scx_cak
 86260cf3ded92eb77d9c3868faf4e8f543b9b6f2 # perf: gate architecture restructure + zero-arena running + idle shadow hints
 373240fa524724a491c7a9ac059e5971303daa0c # PANDEMONIUM: import
 e887c6a4a615df59d13b849d8d279bda3c4da88c # PANDEMONIUM: bump to 5.3.0
-d108e806ace1e13602589177450ed19f4372d461 # Bump libbpf-rs to 80d730e8 and use reference_obj skeleton generation
+cf13c6133241baf24e466934cb4f64f02aac99ee # PANDEMONIUM: bump to 5.4.1
+db68a44d58475e30e93a1a48379a3926827e5ed0 # Bump libbpf-rs to 80d730e8 and use reference_obj skeleton generation
 )
 
 _reverts=(
