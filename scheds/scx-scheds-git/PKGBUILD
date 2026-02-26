@@ -9,7 +9,7 @@ _mode=release
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.0.20.r144.gaed1f77d
-pkgrel=4
+pkgrel=5
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -94,7 +94,7 @@ ec7f098944e7ada567159e4cf617a2fd7e60d772 # cake: fix runtime crash — remove co
 b2e1e27da948e8830fe5d59a47337f540d3207ed # PANDEMONIUM: bump to 5.3.0
 2f5e6344a489df37029f7c6d6bfd8399b835832b # PANDEMONIUM: bump to 5.4.1
 929297d0d1890c13705bf8e3cf0a1a3846483256 # PANDEMONIUM: bump to 5.4.1 v2
-11a74b44682e4373979940aaea066fd982115b8a # Bump libbpf-rs to 80d730e8 and use reference_obj skeleton generation
+bdd2128b749b91b3fb25a60a607e34e2c4c6ebba # Bump libbpf-rs to 80d730e8 and use reference_obj skeleton generation
 )
 
 _reverts=(
