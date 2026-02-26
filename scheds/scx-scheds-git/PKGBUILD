@@ -9,7 +9,7 @@ _mode=release
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.0.20.r144.gaed1f77d
-pkgrel=6
+pkgrel=7
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -90,12 +90,13 @@ ec7f098944e7ada567159e4cf617a2fd7e60d772 # cake: fix runtime crash — remove co
 4dfc7f202b4c3529d66940f48d6f9d6b5609b85b # perf: gate architecture restructure + zero-arena running + idle shadow hints
 29c88468396bfe9a2d0ed7e6a0ce58b5864db8cd # cake: waker-chain gate + variable deduplication
 51c5a60dc231ed84f683dc6f4adcaceadb3d8d57 # v1.0.3-Alpha: PPID-based game family detection
-9e14034bd0c3941284f556be77f456ea43a28628 # PANDEMONIUM: import
-b2e1e27da948e8830fe5d59a47337f540d3207ed # PANDEMONIUM: bump to 5.3.0
-2f5e6344a489df37029f7c6d6bfd8399b835832b # PANDEMONIUM: bump to 5.4.1
-929297d0d1890c13705bf8e3cf0a1a3846483256 # PANDEMONIUM: bump to 5.4.1 v2
-b8127108cb85f56bdafd54121d8b12dbd27d18d9 # PANDEMONIUM: bump to 5.4.1 v5
-06f02d16ceb6b115c1c14383374cc0443b8b8c07 # Bump libbpf-rs to 80d730e8 and use reference_obj skeleton generation
+133f1ecf07daaa17549d77b840ed860b61ebc23a # cake: add 15s hysteresis to game detection to prevent alt-tab freeze
+3768c341bbfe0995da2fe105ad4eaf61289a8634 # PANDEMONIUM: import
+271d988a44c640749d3362e4462804da2ae926b5 # PANDEMONIUM: bump to 5.3.0
+16e9db681c580193e18791e3cc5798d97f96746a # PANDEMONIUM: bump to 5.4.1
+e250a8dff47d3a66f303a6cd21cf58ee95e85d98 # PANDEMONIUM: bump to 5.4.1 v2
+d06c4879f936dc49639f845c23cb7dbb3e822ae5 # PANDEMONIUM: bump to 5.4.1 v5
+f74d06811dcb64e3498382d8ff871ef5f8270642 # Bump libbpf-rs to 80d730e8 and use reference_obj skeleton generation
 )
 
 _reverts=(
