@@ -9,7 +9,7 @@ _mode=release
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.0.20.r180.g138b95e6
-pkgrel=2
+pkgrel=3
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -92,14 +92,16 @@ efae218d7026b5581d742ced5d0b6edd28f99b77 # cake: waker priority inheritance + Be
 b7458fac9c603c5042569cd2a11e0cc24d290226 # v1.0.3-Alpha: PPID-based game family detection
 4301eb3d0cce1d8b44df6e7ee48629d3b3c5e16b # cake: add 15s hysteresis to game detection to prevent alt-tab freeze
 23e9951dd2061bd5326ddc20396af4fa4b1f1c65 # fix(scx_cake): PPID game family detection broken in release builds
-38b745be6e8d39f50bffbe189dc97d12532bb572 # PANDEMONIUM: import
-34815bdbe5b45e6396fb9224ba3ac054e0467292 # PANDEMONIUM: bump to 5.3.0
-f8c829a3ce98038fc10562f27e198f689336fb72 # PANDEMONIUM: bump to 5.4.1
-d72e158c9d5ff6bd3ca5f782a580795e5eed7833 # PANDEMONIUM: bump to 5.4.1 v2
-ed96f4825c782cfc5a043fe402986bdf249d266d # PANDEMONIUM: bump to 5.4.1 v5
-7222ea2d48f68d113dc172d16c53e688b50bc717 # PANDEMONIUM: bump to 5.4.1 v6
-05251ca9b879608a065051a69e88e369f59d2943 # PANDEMONIUM: update Cargo.toml
-b3e8e1b233612680fca71607ee485b588e6aa884 # PANDEMONIUM: bump to 5.4.8
+13a6b490b8e39bb42a39d16c0d3bb0035d64de21 # fix: eliminate TOCTOU race in CAKE_STATS_ACTIVE causing callback profile corruption
+349e2c46052cfdab854f25dd9ec6e85580c316d4 # PANDEMONIUM: import
+be872e4c0a93b3b422b7e21fb2892391aadedb47 # PANDEMONIUM: bump to 5.3.0
+e69f34eb1118d42f1f75fd2e37091612e52df533 # PANDEMONIUM: bump to 5.4.1
+56c8083bf4ec612d46eff99c411696fd5d70dff8 # PANDEMONIUM: bump to 5.4.1 v2
+7add5c9faa344d8809011fd071dd54302bcae496 # PANDEMONIUM: bump to 5.4.1 v5
+a4900542861397c4dc8a51acc734e3b35027e9a1 # PANDEMONIUM: bump to 5.4.1 v6
+ee36bb39150eeed5e26e98553dc600bf8ef40dbd # PANDEMONIUM: update Cargo.toml
+8946e45f0e7592c6eac42ba8912dd98f5f56fcb8 # PANDEMONIUM: bump to 5.4.8
+7eddc454ce78762b75cfdaa79de14ea0ff5b224a # PANDEMONIUM: bump to 5.4.9
 )
 
 _reverts=(
