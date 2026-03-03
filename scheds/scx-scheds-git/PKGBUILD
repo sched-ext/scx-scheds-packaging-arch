@@ -9,7 +9,7 @@ _mode=release
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.0.20.r196.g3bf6e48a
-pkgrel=2
+pkgrel=3
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -94,19 +94,21 @@ e2b390affb97609d78dc0b58dc9671befb85712b # cake: add 15s hysteresis to game dete
 eab497a1c126b792970db81403d4267f1d6f4354 # fix(scx_cake): PPID game family detection broken in release builds
 8f8bf20604037f2d98385471f9d2113bb167018e # fix: eliminate TOCTOU race in CAKE_STATS_ACTIVE causing callback profile corruption
 bd82c72473ed105acbf815d8b5d3c8e78f9fb533 # scx_cake: clock domain unification, Gate 1S removal, adaptive preemption
-3bc706b37bdeae8df874fc70f2a3d924f27b8611 # PANDEMONIUM: import
-c9c992b13cf69696a912b4b6f5fcb87d3987cd99 # PANDEMONIUM: bump to 5.3.0
-833284f66d83960489f414a6f9cc1ae8b22e087a # PANDEMONIUM: bump to 5.4.1
-9f51bc5b791bb334bae7b1a3de66fed85cd16aa3 # PANDEMONIUM: bump to 5.4.1 v2
-c295cd687bf2165e33ac078cdfac95e1dae58af1 # PANDEMONIUM: bump to 5.4.1 v5
-51411bf5bc404b65af94368a2ac9ec96af7afe0a # PANDEMONIUM: bump to 5.4.1 v6
-5908f0c30c284d28ec4bbf18c3c28d51b0c673d8 # PANDEMONIUM: update Cargo.toml
-b9528c80ab2de3f0c40e175b09706a21ec2c15fd # PANDEMONIUM: bump to 5.4.8
-e0d37431c41e406e158384f22635f69a840da4b7 # PANDEMONIUM: bump to 5.4.9
-4c4f27c5b1a921beb63e61adb22e08e8c18559b1 # PANDEMONIUM: bump to 5.4.10
-71d857fb43628b5e1c4a74b071d6d7dff83114c8 # PANDEMONIUM: bump to 5.4.11
-322236bae12b751fed391cf2cafa22f209cb7b9a # PANDEMONIUM: update Cargo.toml
-d6a4bb140a714abbc5bb0531d3d9dff26341a0d8 # PANDEMONIUM: bump to 5.4.12
+046d61de18aa5023d87a52477aa6f70e9d023b56 # Revert "scx_cake: update Cargo.lock"
+fc6426aa496842c80e4439fa14e989f71f27e5ae # scx_cake: update Cargo.lock
+11b53ae209cf538c232b62b3bdb8b8ff5a2ca6e5 # PANDEMONIUM: import
+0db4fe21efe8f1f44238043148c6de00b5fab30a # PANDEMONIUM: bump to 5.3.0
+699e8ec8af6c4214108a53d9cf479e2e1e0b3ff9 # PANDEMONIUM: bump to 5.4.1
+e9ae28b34d077a1cb08a555e645741e6348db460 # PANDEMONIUM: bump to 5.4.1 v2
+b84b91c23cf3acb165846081198ab97f450906fe # PANDEMONIUM: bump to 5.4.1 v5
+1b8db7ab3e635cff5db3f4cd40ab86c9cd0530ee # PANDEMONIUM: bump to 5.4.1 v6
+554cd5adc312d347fbe289668d18aa8974baae1b # PANDEMONIUM: update Cargo.toml
+bd9d7ea338e5f5ed04663a85eec7bdbb1a7d18b6 # PANDEMONIUM: bump to 5.4.8
+c617a35dc22787bea046793b1c4e9d591bed6a72 # PANDEMONIUM: bump to 5.4.9
+c45e4198fca8e2d8fd825227c49300795c0d333f # PANDEMONIUM: bump to 5.4.10
+89206afc128954e65dca92f65826f0d8bd7a62cc # PANDEMONIUM: bump to 5.4.11
+58c33d94eac66bbfe52eb12556f2d7690eaa3975 # PANDEMONIUM: update Cargo.toml
+fd313fd52c17a5d077000ae8f198526d6a364631 # PANDEMONIUM: bump to 5.4.12
 )
 
 _reverts=(
