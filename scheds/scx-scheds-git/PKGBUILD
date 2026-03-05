@@ -9,7 +9,7 @@ _mode=release
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.0.20.r238.g6fa5e78c
-pkgrel=1
+pkgrel=2
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -112,6 +112,7 @@ da50094aa6f8b10ce5e64649cde442206cc9e2eb # PANDEMONIUM: bump to 5.4.9
 554df555c55f59ba161d45fd2d4f5bc561787338 # PANDEMONIUM: bump to 5.4.11
 b5e19fa304f69ec0f52bd64a9ba8f08fa28b7c52 # PANDEMONIUM: update Cargo.toml
 8f71c37fd82349940a58c46979a5c9b31bebd6ef # PANDEMONIUM: bump to 5.4.12
+6732b9d6569c92345625a8a99ef6abbd7ef09edc # PANDEMONIUM: sync with pull request
 )
 
 _reverts=(
