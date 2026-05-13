@@ -9,20 +9,14 @@ _mode=release
 pkgname=scx-scheds
 _gitname=scx
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
 license=('GPL-2.0-only')
 depends=(
-  bash
-  bpf
-  gcc-libs
-  glibc
-  jq
-  libseccomp
-  libbpf
   libelf
+  libseccomp
   protobuf
   zlib
 )
@@ -32,7 +26,6 @@ makedepends=(
   git
   llvm
   llvm-libs
-  python
 )
 optdepends=(
 'scx-tools: scx_loader and scxctl - A DBUS Interface for Managing sched_ext Schedulers '
