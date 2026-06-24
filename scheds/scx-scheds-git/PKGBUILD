@@ -8,7 +8,7 @@ _mode=release
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.1.1.r166.g13d50ce4
+pkgver=1.1.1.r201.g19ed8749
 pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
@@ -23,6 +23,7 @@ depends=(
 makedepends=(
   cargo
   clang
+  cmake
   git
   llvm
   llvm-libs
