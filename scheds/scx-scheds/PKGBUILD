@@ -9,7 +9,7 @@ _mode=release
 pkgname=scx-scheds
 _gitname=scx
 pkgver=1.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -88,7 +88,6 @@ build() {
   cargo build \
      --profile=$_mode \
      --frozen \
-     --all-features \
      --workspace \
      --exclude scx_rlfifo \
      --exclude scx_characterize \
