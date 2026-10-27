@@ -19,7 +19,6 @@ pkgbase = scx-tools
 	options = !lto
 	source = git+https://github.com/sched-ext/scx-loader?signed#tag=v1.1.3
 	validpgpkeys = B1B70BB1CD56047DEF31DE2EB62C3D10C54D5DA9
-	validpgpkeys = 399521CE9D6D65B35EEF0F8C79AFA05ABDB26C5A
 	sha256sums = da3033733b7bf7d5a9729e31aec2328ebc97d45318726633ed8f83af840f0339
 
 pkgname = scx-tools
