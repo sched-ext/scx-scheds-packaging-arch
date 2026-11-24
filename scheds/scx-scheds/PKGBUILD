@@ -8,31 +8,34 @@ _mode=release
 
 pkgname=scx-scheds
 _gitname=scx
-pkgver=1.1.4
+pkgver=1.1.5
 pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
 license=('GPL-2.0-only')
-depends=(
+ddepends=(
   libelf
   libseccomp
   protobuf
   zlib
 )
 makedepends=(
+  bpf-linker
   cargo
   clang
   git
   llvm
   llvm-libs
+  rust-src
 )
 optdepends=(
 'scx-tools: scx_loader and scxctl - A DBUS Interface for Managing sched_ext Schedulers '
 )
+backup=('etc/default/scx')
 options=(!lto)
 source=("git+https://github.com/sched-ext/scx?signed#tag=v$pkgver")
-sha256sums=('86b19d7667e5d8e6da6bbda6d609db0a1624fb13ad8c845e50684c7efb44f1ba')
+sha256sums=('dfcf40ab62bb9a5513dafad218a4d0710e135b2933af5672c7ca46f09a4ddf4f')
 validpgpkeys=(
   697C63013E65270255EBC2608744DC1EB26B5A9A  # Tejun Heo <tj@kernel.org>
   F5504C7B7B8107B40EF9E97AA1148BB3207BCC33  # David Vernet <void@manifault.com>
@@ -42,6 +45,7 @@ validpgpkeys=(
 )
 
 _backports=(
+bb91c83b0e4be49961ffe970a0874f18ff21cecb # scheds: Refresh Rust BPF lockfiles for 1.1.5
 )
 
 _reverts=(
@@ -83,9 +87,7 @@ build() {
      --profile=$_mode \
      --frozen \
      --workspace \
-     --exclude scx_rlfifo \
      --exclude scx_characterize \
-     --exclude xtask \
      --exclude vmlinux_docify \
      --exclude scx_arena_selftests \
      --exclude scx_arena_libarena_selftests
@@ -96,6 +98,11 @@ package() {
 
   # Install all built executables (skip .so and .d files)
   find target/$_mode \
-    -maxdepth 1 -type f -executable ! -name '*.so' \
+    -maxdepth 1 -type f -executable ! -name '*.so' ! -name 'xtask' \
     -exec install -Dm755 -t "$pkgdir/usr/bin/" {} +
+
+  # Runtime data via xtask: scx.service, /etc/default/scx,
+  # /usr/share/scx/catalog.json, the scxcli polkit policy.
+  # --source-dir keeps cargo out of package().
+  ./target/$_mode/xtask install --source-dir . --destdir "$pkgdir"
 }
