@@ -8,7 +8,7 @@ _mode=release
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.1.4.r248.g8820f95ed
+pkgver=1.1.5.r1.g0b69842ff
 pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
@@ -40,6 +40,7 @@ source=("git+https://github.com/sched-ext/scx")
 sha256sums=('SKIP')
 
 _backports=(
+bb91c83b0e4be49961ffe970a0874f18ff21cecb # scheds: Refresh Rust BPF lockfiles for 1.1.5
 )
 
 _reverts=(
