@@ -9,15 +9,14 @@ _mode=release
 pkgname=scx-scheds
 _gitname=scx
 pkgver=1.1.5
-pkgrel=1
+pkgrel=2
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
 license=('GPL-2.0-only')
-ddepends=(
+depends=(
   libelf
-  libseccomp
-  protobuf
+  polkit
   zlib
 )
 makedepends=(
@@ -26,7 +25,6 @@ makedepends=(
   clang
   git
   llvm
-  llvm-libs
   rust-src
 )
 optdepends=(
